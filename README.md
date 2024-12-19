@@ -4,7 +4,7 @@
 ### Overview
 This assignment demonstrates the use of the Heap-Sort algorithm to sort a sequence of numbers and provides an analysis of the algorithm's efficiency. The implementation is done in C# and adheres to best practices for algorithmic problem-solving.
 
-### Part (a): Required Algorithms for Heap-Sort
+### Required Algorithms for Heap-Sort
 
 #### 1. HEAPIFY
 Ensures the Max-Heap property for a subtree rooted at a specific index.
@@ -51,7 +51,7 @@ HEAP_SORT(A):
         HEAPIFY(A, i, 0)
 ```
 
-### Part (b): Analysis of Heap-Sort
+### Analysis of Heap-Sort
 1. **HEAPIFY**:
    - Time Complexity: \( O(\log n) \)
    - Space Complexity: \( O(1) \)
@@ -70,7 +70,7 @@ HEAP_SORT(A):
 ### Overview
 This assignment demonstrates the implementation of Kruskal's algorithm to find the Minimum Spanning Tree (MST) of a network. The solution involves the Union-Find data structure for cycle detection and edge selection.
 
-### Part (a): Required Algorithms for Kruskal’s Algorithm
+### Required Algorithms for Kruskal’s Algorithm
 
 #### 1. Union-Find Data Structure
 Efficiently manages disjoint sets and supports cycle detection.
@@ -114,7 +114,7 @@ KRUSKAL_MST(G):
     return MST
 ```
 
-### Part (b): Analysis of Kruskal’s Algorithm
+### Analysis of Kruskal’s Algorithm
 1. **Sorting Edges**:
    - Time Complexity: \( O(E \log E) \)
 
