@@ -1,8 +1,8 @@
 # HeapSort-AND-Kruskal-Algorithms
 ### Overview
-####This repository contains C# implementations of
-    #####1. Heap-Sort: A sorting algorithm that uses a heap to arrange elements in order.
-    #####2. Kruskal's Algorithm: A method to find the Minimum Spanning Tree (MST) of a graph.
+This repository contains C# implementations of
+    1. Heap-Sort: A sorting algorithm that uses a heap to arrange elements in order.
+    2. Kruskal's Algorithm: A method to find the Minimum Spanning Tree (MST) of a graph.
 
 ## Heap-Sort Algorithm
 
