@@ -1,7 +1,7 @@
 # HeapSort-AND-Kruskal-Algorithms
-## Programming Assignment: Heap-Sort Algorithm
+## Heap-Sort Algorithm
 
-### Task Overview
+### Overview
 This assignment demonstrates the use of the Heap-Sort algorithm to sort a sequence of numbers and provides an analysis of the algorithm's efficiency. The implementation is done in C# and adheres to best practices for algorithmic problem-solving.
 
 ### Part (a): Required Algorithms for Heap-Sort
@@ -65,9 +65,9 @@ HEAP_SORT(A):
 
 ---
 
-## Programming Assignment: Kruskal's Algorithm
+## Kruskal's Algorithm
 
-### Task Overview
+### Overview
 This assignment demonstrates the implementation of Kruskal's algorithm to find the Minimum Spanning Tree (MST) of a network. The solution involves the Union-Find data structure for cycle detection and edge selection.
 
 ### Part (a): Required Algorithms for Kruskal’s Algorithm
