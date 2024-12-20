@@ -1,64 +1,108 @@
-﻿namespace HeapSort.Csharp
+﻿using System;
+using System.Collections.Generic;
+
+class Edge : IComparable<Edge>
 {
-    internal class Program
+    public int Source { get; }
+    public int Destination { get; }
+    public int Weight { get; }
+
+    public Edge(int source, int destination, int weight)
     {
-        static void Heapify(int[] arr, int n, int i)
+        Source = source;
+        Destination = destination;
+        Weight = weight;
+    }
+
+    public int CompareTo(Edge other)
+    {
+        return Weight.CompareTo(other.Weight);
+    }
+}
+
+class UnionFind
+{
+    private int[] Parent;
+    private int[] Rank;
+
+    public UnionFind(int size)
+    {
+        Parent = new int[size];
+        Rank = new int[size];
+
+        for (int i = 0; i < size; i++)
         {
-            int largest = i;
-            int l = 2 * i + 1;
-            int r = 2 * i + 2;
+            Parent[i] = i;
+            Rank[i] = 0;
+        }
+    }
 
-            if (l < n && arr[l] > arr[largest])
+    public int Find(int u)
+    {
+        if (Parent[u] != u)
+            Parent[u] = Find(Parent[u]);
+
+        return Parent[u];
+    }
+
+    public void Union(int u, int v)
+    {
+        int rootU = Find(u);
+        int rootV = Find(v);
+
+        if (rootU != rootV)
+        {
+            if (Rank[rootU] > Rank[rootV])
+                Parent[rootV] = rootU;
+            else if (Rank[rootU] < Rank[rootV])
+                Parent[rootU] = rootV;
+            else
             {
-                largest = l;
-            }
-
-            if (r < n && arr[r] > arr[largest])
-            {
-                largest = r;
-            }
-
-            if (largest != i)
-            {
-                int temp = arr[i];
-                arr[i] = arr[largest];
-                arr[largest] = temp;
-
-                Heapify(arr, n, largest);
+                Parent[rootV] = rootU;
+                Rank[rootU]++;
             }
         }
-        static void HeapSortArray(int[] arr)
+    }
+}
+
+class KruskalAlgorithm
+{
+    public static List<Edge> KruskalMST(int vertices, List<Edge> edges)
+    {
+        edges.Sort();
+        var uf = new UnionFind(vertices);
+        var mst = new List<Edge>();
+
+        foreach (var edge in edges)
         {
-            int n = arr.Length;
-
-            for (int i = n / 2 - 1; i >= 0; i--)
+            if (uf.Find(edge.Source) != uf.Find(edge.Destination))
             {
-                Heapify(arr, n, i);
-            }
-
-            for (int i = n - 1; i > 0; i--)
-            {
-                int temp = arr[0];
-                arr[0] = arr[i];
-                arr[i] = temp;
-
-                Heapify(arr, i, 0);
+                mst.Add(edge);
+                uf.Union(edge.Source, edge.Destination);
             }
         }
-        static void PrintArray(int[] arr)
+
+        return mst;
+    }
+
+    public static void Main()
+    {
+        int vertices = 4;
+        var edges = new List<Edge>
         {
-            foreach (int value in arr)
-            {
-                Console.Write(value + " ");
-            }
-            Console.WriteLine();
-        }
-        static void Main(string[] args)
+            new Edge(0, 1, 10),
+            new Edge(0, 2, 6),
+            new Edge(0, 3, 5),
+            new Edge(1, 3, 15),
+            new Edge(2, 3, 4)
+        };
+
+        var mst = KruskalMST(vertices, edges);
+
+        Console.WriteLine("Edges in the MST:");
+        foreach (var edge in mst)
         {
-            int[] arr = { 9, 4, 3, 8, 10, 2, 5 };
-            HeapSortArray(arr);
-            Console.WriteLine("Sorted array is ");
-            PrintArray(arr);
+            Console.WriteLine($"({edge.Source}, {edge.Destination}) - Weight: {edge.Weight}");
         }
     }
 }
